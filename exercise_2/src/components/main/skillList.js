@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const SkillList = ({ skills }) => {
   return (
     <div>
@@ -7,7 +9,17 @@ export const SkillList = ({ skills }) => {
         <ul>
           {
             skills.map((item, index) => {
-              return (<li key={`${item} ${index}`}>{item}</li>);
+              return (
+                <Link 
+                  to={`/skills/${item}`}
+                  key={`${item}_${index}`}
+                  style={{listStyle:"none"}}
+                  >
+                    <p>
+                      {item}
+                    </p>
+                </Link>
+              );
             })
           }
         </ul>

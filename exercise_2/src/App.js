@@ -1,20 +1,29 @@
+import { useState } from 'react';
 import './App.css';
-import { Footer } from './components/footer/footer';
-import { Header } from './components/header/header';
-import { MainComponent } from './components/main/main';
-import dataFromHeader from './data/headerData.json';
-import mainData from './data/mainData.json';
+import { Welcome } from './components/welcome/welcome';
+import { Home } from './components/home/home';
+import { Route, Routes } from 'react-router-dom';
+import { User } from './components/user/user';
+import { SkillComponent } from './components/skill/skill';
 
 function App() {
-  const heading = dataFromHeader.headerData.heading1;
-  const author = dataFromHeader.headerData.author;
-  const thisYear = new Date().getFullYear();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const handleLogin = () => {
+    setIsLoggedIn(!isLoggedIn);
+  }
   return (
     <div className="App">
-      <Header heading1={heading} author={author}/>
-      <MainComponent user={mainData.userData} />
-      <Footer date={thisYear} />
+      <Routes>
+        <Route 
+          path='/' 
+          element={<Welcome isLoggedIn={isLoggedIn} handleLogin={handleLogin}/>}
+        />
+        <Route path='home' element={<Home/>} />
+        <Route path='user/:username' element={<User/>} />
+        <Route path='skills/:skill' element={<SkillComponent/>} />
+      </Routes>
+
     </div>
   );
 }
