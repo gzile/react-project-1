@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
+// Make new design for the links
 export const SkillList = ({ skills }) => {
   return (
     <div>
-    { 
+    {
       skills ?
       <div className='user-skills'>
         <ul>

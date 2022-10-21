@@ -2,11 +2,11 @@ import cssLogo from '../../images/css_logo.png';
 import jsLogo from '../../images/js_logo.png';
 import htmlLogo from '../../images/html_logo.png';
 import { useParams } from 'react-router-dom';
-import userData from '../../data/mainData.json'
+import mainData from '../../data/mainData.json'
 
 export const SkillComponent = () => {
 const { skill } = useParams();
-const skillList = userData.userData.skills;
+const skillList = mainData.userData.skills;
 
 const setImageSrc = () => {
   
@@ -24,16 +24,10 @@ const setImageSrc = () => {
       return htmlLogo;
   }
 }
-// const handleClick = () => {
-//   setIsLoggedIn(!isLoggedIn);
-// }
-
   return (
-    <div className='user-card'>
+    <div className='skill-card'>
       <img src={setImageSrc()} width='120px' height='180px' alt={skill} />
       <h2>{skill}</h2>
-
-      {/* <button onClick={handleClick}>Go Back</button> */}
     </div>
   )
 }
